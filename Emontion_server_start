@@ -1,0 +1,37 @@
+#################
+#author:libo    #
+#date : 20180131#
+#################
+
+服务器：211.159.158.25
+测试模型路径:root/tensorflowServing1.0/serving/Emontionlibo
+客户端py:/root/tensorflow/serving/serving/client_python.py
+模型目录结构 ：
+   ner  tree
+   
+   -----1  #version
+       -----saved_model.pb
+       -----variables
+           ---- variables.data-0000-of-00001
+           ----variables.index
+
+
+
+
+[root@VM_6_155_centos serving]# bazel-bin/tensorflow_serving/model_servers/tensorflow_model_server --port=8000 --model_name=test_saved_model  --model_base_path=/root/tensorflow/serving/serving/emontion_model/test_saved_model/
+2018-01-31 14:08:21.280964: I tensorflow_serving/model_servers/main.cc:147] Building single TensorFlow model file config:  model_name: test_saved_model model_base_path: /root/tensorflow/serving/serving/emontion_model/test_saved_model/
+2018-01-31 14:08:21.281282: I tensorflow_serving/model_servers/server_core.cc:441] Adding/updating models.
+2018-01-31 14:08:21.281378: I tensorflow_serving/model_servers/server_core.cc:492]  (Re-)adding model: test_saved_model
+2018-01-31 14:08:21.381740: I tensorflow_serving/core/basic_manager.cc:705] Successfully reserved resources to load servable {name: test_saved_model version: 1}
+2018-01-31 14:08:21.381794: I tensorflow_serving/core/loader_harness.cc:66] Approving load for servable version {name: test_saved_model version: 1}
+2018-01-31 14:08:21.381817: I tensorflow_serving/core/loader_harness.cc:74] Loading servable version {name: test_saved_model version: 1}
+2018-01-31 14:08:21.381854: I external/org_tensorflow/tensorflow/contrib/session_bundle/bundle_shim.cc:360] Attempting to load native SavedModelBundle in bundle-shim from: /root/tensorflow/serving/serving/emontion_model/test_saved_model/1
+2018-01-31 14:08:21.381952: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:236] Loading SavedModel from: /root/tensorflow/serving/serving/emontion_model/test_saved_model/1
+2018-01-31 14:08:21.422233: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:155] Restoring SavedModel bundle.
+
+2018-01-31 14:08:21.604636: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:190] Running LegacyInitOp on SavedModel bundle.
+2018-01-31 14:08:21.618449: I external/org_tensorflow/tensorflow/cc/saved_model/loader.cc:284] Loading SavedModel: success. Took 236429 microseconds.
+2018-01-31 14:08:21.619146: I tensorflow_serving/core/loader_harness.cc:86] Successfully loaded servable version {name: test_saved_model version: 1}
+
+E0131 14:08:21.821732394   37010 ev_epoll1_linux.c:1051]     grpc epoll fd: 3
+2018-01-31 14:08:21.822678: I tensorflow_serving/model_servers/main.cc:288] Running ModelServer at 0.0.0.0:8000 ...
